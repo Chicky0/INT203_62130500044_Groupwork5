@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Vue Js - HelloWorld App</title>
+
+  <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+  <!-- Using via Google Web Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- https://tailwindcss.com/docs/installation -->
+  <!-- Using Tailwind via CDN -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+
+<body class="bg-gray-200">
+  <div id="app">
+    <div class="text-center text-4xl font-bold mb-20 mt-10">My Photo Gallery ({{countDone}}) Picture ({{cartoon.length}})</div>
+    <search :cartoon="cartoon" @search="search" ></search>
+    <view-photo :filter-search="filterSearch" :show-img="showImg" :img-index="imgIndex" @show-images ="showImages" @close-image="closeImages"></view-photo>
+    <list-photo :cartoon="cartoon" :filter-search="filterSearch" :search-found ="searchFound" @toggle-done ="toggleDone" @show-images="showImages"></list-photo>
+      <!-- <div class="text-center">
+      <div class="text-center text-4xl font-bold mb-10 mt-10">My Photo Gallery ({{countDone}})</div>
+      <div v-if="click" class="text-center mb-10">
+        <input v-model="input" class="bg-gray-100 pl-16 pr-20 py-2 ml-14 text-center text-gray-800 border-2" 
+        placeholder="Enter Text For Search" type="text">
+        <button class="bg-blue-300 ml-4 py-2 rounded-sm p-2 text-gray-500" v-on:click="searchinput()">Cancel</button>
+      </div>
+      <i class="material-icons text-4xl mb-10 mr-80" v-on:click="searchinput()" v-else>search</i>
+      </div>
+      <div v-if="showImg" class="mb-20 flex justify-between">
+        <div></div>
+        <div class="flex bg-black"><img :src="filterSearch[imgIndex].image" class="h-72 w-96 mx-auto pl-6 py-2">
+        <i class="material-icons text-4xl text-white" v-on:click="closeImages(index)">clear</i>
+        <br>
+        </div>
+        <div></div>
+      </div>
+      <div class="flex justify-between">
+      <div></div>
+      <div v-for="(cartoon,index) in filterSearch">
+        <img :src="cartoon.image" v-on:dblclick="toggleDone(index)" @click="showImages(index)" class="h-64 w-80 ml-20 mr-36"/>
+        <div class="flex">
+        <div class="ml-20 text-lg">{{cartoon.name}}</div>
+        <i class="material-icons text-red-400 ml-4"  v-show="cartoon.done">
+          favorite
+        </i>
+      </div>
+      </div>
+      <div></div>
+    </div>
+    <div v-if="searchFound" class="text-center mt-4 text-4xl">Sorry... But Not Found</div>-->
+  </div>
+
+  <script src="./main.js"></script>
+  <script src="./components/PhotoItem.js"></script>
+  <script src="./components/PhotoView.js"></script>
+  <script src="./components/PhotoSearch.js"></script>
+  <script>
+    const mountedApp = app.mount('#app')
+  </script>
+</body>
+
+</html>
